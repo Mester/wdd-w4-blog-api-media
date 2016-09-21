@@ -22,7 +22,7 @@ from django.views.static import serve
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # include `blog.urls` here, configuring the versioning properly
-    url(r'^api/v1/', include('blog.urls')),
+    url(r'^api/v1/', include('blog.urls', namespace='v1')),
     # media files
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
 ]

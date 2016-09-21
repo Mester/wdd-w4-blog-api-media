@@ -79,4 +79,4 @@ class StatusView(APIView):
     def get(self, request, *args, **kwargs):
         # just return a JSON like this: {"version": "v1"}
         # getting the API version from the request
-        return Response({"version": "v1"})
+        return Response({"version": request.version})
