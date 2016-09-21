@@ -1,11 +1,10 @@
-from django.contrib.auth.hashers import make_password
-
-from rest_framework import viewsets, mixins, filters, status
-from rest_framework.response import Response
-from rest_framework.views import APIView
-
 from blog.models import User, Entry, Blog
 from blog.serializers import UserSerializer, EntrySerializer, BlogSerializer
+from django.contrib.auth.hashers import make_password
+from rest_framework import viewsets, mixins, filters, status
+from rest_framework.parsers import JSONParser, FormParser, MultiPartParser
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 
 class UserViewSet(mixins.RetrieveModelMixin,
@@ -14,7 +13,6 @@ class UserViewSet(mixins.RetrieveModelMixin,
                   mixins.DestroyModelMixin,
                   mixins.ListModelMixin,
                   viewsets.GenericViewSet):
-
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = (filters.SearchFilter, filters.OrderingFilter)
@@ -52,7 +50,6 @@ class BlogViewSet(mixins.RetrieveModelMixin,
                   mixins.DestroyModelMixin,
                   mixins.ListModelMixin,
                   viewsets.GenericViewSet):
-
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
     filter_backends = (filters.SearchFilter, filters.OrderingFilter)
@@ -66,12 +63,12 @@ class EntryViewSet(mixins.RetrieveModelMixin,
                    mixins.DestroyModelMixin,
                    mixins.ListModelMixin,
                    viewsets.GenericViewSet):
-
     queryset = Entry.objects.all()
     serializer_class = EntrySerializer
     filter_backends = (filters.SearchFilter, filters.OrderingFilter)
     search_fields = ('headline',)
     ordering_fields = ('id',)
+    parser_classes = (JSONParser, FormParser, MultiPartParser)
 
     # def get_serializer_class(self):
     #     import pdb; pdb.set_trace()
@@ -79,7 +76,6 @@ class EntryViewSet(mixins.RetrieveModelMixin,
 
 
 class StatusView(APIView):
-
     def get(self, request, *args, **kwargs):
         # just return a JSON like this: {"version": "v1"}
         # getting the API version from the request

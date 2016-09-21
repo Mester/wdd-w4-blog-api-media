@@ -45,6 +45,7 @@ class Entry(models.Model):
     number_comments = models.IntegerField()
     scoring = models.DecimalField(max_digits=3, decimal_places=2)
     # define a new `image` field as a Django `ImageField`
+    image = models.ImageField(blank=True, default=None)
 
     def __unicode__(self):
         return self.headline
