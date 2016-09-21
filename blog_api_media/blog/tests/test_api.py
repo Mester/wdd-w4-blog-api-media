@@ -33,6 +33,7 @@ class EntryTestCase(APITestCase):
             blog=self.blog, scoring=4.25, number_comments='20')
         self.entry_2.pub_date = date(2016, 1, 15)
         self.entry_2.save()
+        self.maxDiff=None
 
     def tearDown(self):
         cache.clear()
@@ -65,7 +66,7 @@ class EntryTestCase(APITestCase):
                     'body_text': 'Some body text',
                     'headline': 'Some headline',
                     'image': None,
-                    'mod_date': '2016-09-20',
+                    'mod_date': str(date.today()),
                     'number_comments': 10,
                     'pub_date': '2016-01-15',
                     'scoring': '2.04',
@@ -79,7 +80,7 @@ class EntryTestCase(APITestCase):
                     'body_text': 'Some body text',
                     'headline': 'Some headline',
                     'image': None,
-                    'mod_date': '2016-09-20',
+                    'mod_date': str(date.today()),
                     'number_comments': 20,
                     'pub_date': '2016-01-15',
                     'scoring': '4.25',
