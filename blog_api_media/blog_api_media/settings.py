@@ -131,6 +131,14 @@ REST_FRAMEWORK = {
     # - versioning
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
     # - throlling
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '50/minute',
+        'user': '50/minute'
+    },
 }
 MEDIA_ROOT = os.path.join(BASE_DIR, 'blog/media/')
 MEDIA_URL = '/media/'
