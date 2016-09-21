@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 
-from django.db import models
-from django.core.exceptions import ValidationError
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
+from django.db import models
 
 
 def validate_authkey(value):
@@ -13,7 +13,6 @@ def validate_authkey(value):
 
 
 class User(AbstractUser):
-
     accesskey = models.CharField(max_length=32, unique=True,
                                  validators=[validate_authkey])
     secretkey = models.CharField(max_length=32,

@@ -1,10 +1,8 @@
-from rest_framework import serializers
-
 from blog.models import User, Entry, Blog
+from rest_framework import serializers
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-
     class Meta:
         model = User
         fields = ('id', 'username', 'accesskey', 'password',
@@ -17,14 +15,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class BlogSerializer(serializers.HyperlinkedModelSerializer):
-
     class Meta:
         model = Blog
         fields = '__all__'
 
 
 class EntrySerializer(serializers.HyperlinkedModelSerializer):
-
     class Meta:
         model = Entry
         fields = '__all__'

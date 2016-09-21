@@ -70,10 +70,6 @@ class EntryViewSet(mixins.RetrieveModelMixin,
     ordering_fields = ('id',)
     parser_classes = (JSONParser, FormParser, MultiPartParser)
 
-    # def get_serializer_class(self):
-    #     import pdb; pdb.set_trace()
-    #     return EntrySerializer
-
 
 class StatusView(APIView):
     def get(self, request, *args, **kwargs):
