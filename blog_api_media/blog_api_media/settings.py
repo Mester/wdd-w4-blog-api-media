@@ -128,6 +128,11 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100,
     # update the REST_FRAMEWORK setting with:
     # - renderer classes
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework_xml.renderers.XMLRenderer',
+    ),
     # - versioning
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
     # - throlling

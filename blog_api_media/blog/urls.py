@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 
 from rest_framework import routers
+from rest_framework.urlpatterns import format_suffix_patterns
 
 from blog.views import UserViewSet, EntryViewSet, BlogViewSet, StatusView
 
@@ -14,3 +15,5 @@ urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^status', StatusView.as_view()),
 ]
+
+# urlpatterns = format_suffix_patterns(urlpatterns, allowed=['json', 'xml'])

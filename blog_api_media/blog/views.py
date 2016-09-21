@@ -73,6 +73,10 @@ class EntryViewSet(mixins.RetrieveModelMixin,
     search_fields = ('headline',)
     ordering_fields = ('id',)
 
+    # def get_serializer_class(self):
+    #     import pdb; pdb.set_trace()
+    #     return EntrySerializer
+
 
 class StatusView(APIView):
 
